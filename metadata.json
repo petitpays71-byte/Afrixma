@@ -1,0 +1,6 @@
+{
+  "name": "AFRIXA",
+  "description": "L'innovation africaine, sans limites. Plateforme numérique multifonctionnelle : éducation, marketplace, bibliothèque, applications, culture crypto, gestion VPN et communauté.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

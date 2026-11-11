@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-midnight: #0B132B;
+    --color-midnight-card: #111D42;
+    --color-midnight-surface: #172554;
+    --color-electric: #3A86FF;
+    --color-electric-glow: #00D2FF;
+    --font-heading: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #080E21;
+    color: #F8FAFC;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0B132B;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3A86FF;
+}
+
+/* Subtle glow effects */
+.glow-electric {
+  box-shadow: 0 0 25px -5px rgba(58, 134, 255, 0.35);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 25px -5px rgba(0, 210, 255, 0.35);
+}
+
+.glow-card {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(58, 134, 255, 0.15);
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(13, 27, 62, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(58, 134, 255, 0.18);
+}

@@ -1,0 +1,89 @@
+{
+  "entities": {
+    "users": {
+      "title": "Utilisateurs AFRIXA",
+      "description": "Profils utilisateurs et gestion des permissions",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "ID unique de l'utilisateur Firebase Auth" },
+        "email": { "type": "string", "format": "email", "description": "Email de l'utilisateur" },
+        "fullName": { "type": "string", "description": "Nom complet" },
+        "phone": { "type": "string", "description": "Numéro de téléphone / Mobile Money" },
+        "role": { "type": "string", "enum": ["admin", "member", "vendor", "trainer", "moderator"], "description": "Rôle dans la plateforme" },
+        "isAdmin": { "type": "boolean", "description": "Drapeau d'autorisation administrateur" },
+        "walletBalance": { "type": "number", "description": "Solde du portefeuille en FCFA" },
+        "rewardPoints": { "type": "number", "description": "Points de fidélité et parrainage" },
+        "referralCode": { "type": "string", "description": "Code de parrainage unique" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "email", "fullName", "role"]
+    },
+    "admins": {
+      "title": "Administrateurs de la plateforme",
+      "description": "Liste de contrôle d'accès pour les administrateurs AFRIXA avec privilèges stricts",
+      "type": "object",
+      "properties": {
+        "adminId": { "type": "string", "description": "UID de l'administrateur" },
+        "email": { "type": "string", "format": "email", "description": "Email administrateur vérifié" },
+        "fullName": { "type": "string", "description": "Nom de l'administrateur" },
+        "phone": { "type": "string", "description": "Numéro OM / MOMO administrateur" },
+        "role": { "type": "string", "const": "admin" },
+        "isSuperAdmin": { "type": "boolean", "description": "Super Administrateur fondateur" },
+        "permissions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Liste des permissions administratives"
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["adminId", "email", "role"]
+    },
+    "settings": {
+      "title": "Configuration Système et Paiements",
+      "description": "Paramètres sensibles de la plateforme AFRIXA protégés par vérification administrateur",
+      "type": "object",
+      "properties": {
+        "platformName": { "type": "string" },
+        "orangeMoneyNumber": { "type": "string", "description": "Numéro de compte Orange Money officiel" },
+        "mtnMomoNumber": { "type": "string", "description": "Numéro de compte MTN Mobile Money officiel" },
+        "adminEmail": { "type": "string", "format": "email", "description": "Email administratif officiel" },
+        "adminPhone": { "type": "string", "description": "Téléphone d'assistance / administration" },
+        "commissionRate": { "type": "number", "description": "Pourcentage de commission plateforme" },
+        "maintenanceMode": { "type": "boolean" },
+        "registrationOpen": { "type": "boolean" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "updatedBy": { "type": "string" }
+      },
+      "required": ["platformName", "orangeMoneyNumber", "mtnMomoNumber", "adminEmail"]
+    },
+    "audit_logs": {
+      "title": "Journaux d'Audit Sécurisés",
+      "description": "Historique infalsifiable des opérations administratives et modifications sensibles",
+      "type": "object",
+      "properties": {
+        "action": { "type": "string", "description": "Action effectuée" },
+        "adminId": { "type": "string", "description": "UID de l'administrateur" },
+        "adminEmail": { "type": "string", "description": "Email de l'administrateur" },
+        "details": { "type": "object", "description": "Détails de l'opération" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "ip": { "type": "string" }
+      },
+      "required": ["action", "adminId", "adminEmail", "timestamp"]
+    },
+    "newsletter_subscribers": {
+      "title": "Abonnés à la Newsletter",
+      "description": "Inscriptions des membres et visiteurs pour les actualités communautaires et opportunités AFRIXA",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email", "description": "Email de l'abonné" },
+        "subscribedAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["active", "unsubscribed"] },
+        "source": { "type": "string" },
+        "language": { "type": "string" }
+      },
+      "required": ["email", "subscribedAt", "status"]
+    }
+  }
+}
+
